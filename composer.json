@@ -1,0 +1,46 @@
+{
+    "name": "rvsitebuilder/marketing",
+    "type": "rvsitebuilder-app",
+    "description": "Website analytics tools that can either report or expand the result you get with Google Analytics and Google Webmaster Tools.",
+    "license": "see license in LICENSE",
+    "keywords": [
+        "laravel",
+        "marketing",
+        "google Analytics",
+        "data Analytics"
+    ],
+    "authors": [
+        {
+            "name": "RVGlobalSoft",
+            "email": "support@rvglobalsoft.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "classmap": [],
+
+        "psr-4": {
+            "Rvsitebuilder\\Marketing\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {}
+    },
+    "extra": {
+        "component": "package",
+        "laravel": {
+            "providers": [
+                "Rvsitebuilder\\Marketing\\MarketingServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": false,
+        "classmap-authoritative": false,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "require": {
+        "google/apiclient": "^2.2"
+    }
+}

@@ -1,0 +1,75 @@
+{
+    "name": "rvsitebuilder/marketing",
+    "alias": "Marketing",
+    "description": "",
+    "keywords": [],
+    "app-launcher": 1,
+    "app-launcher-route": "admin.marketing.mkt.index",
+    "icon": "/vendor/rvsitebuilder/marketing/images/icon-app_marketing.png",
+    "require": {
+        "rvsitebuilder/framework": "0.1.0",
+        "rvsitebuilder/core": "^0.1.0",
+        "rvsitebuilder/wysiwyg": "^0.1.0"
+    },
+    "require-dev": {},
+    "admin-menu": [
+        {
+            "name": "Marketing Dashboard",
+            "link": "admin.marketing.mkt.index"
+        },
+        {
+            "name": "Acquisition",
+            "link": "",
+            "submenu": [
+                {
+                    "name": "SEO",
+                    "link": "admin.marketing.mkt.seo",
+                    "id": "mktseo"
+                },
+                {
+                    "name": "Web Referral",
+                    "link": "admin.marketing.mkt.webreferral",
+                    "id": "mktwebreferral"
+                }
+            ]
+        },
+        {
+            "name": "Performance",
+            "link": "",
+            "submenu": [
+                {
+                    "name": "Page speed",
+                    "link": "admin.marketing.mkt.sitespeed",
+                    "id": "mktsitespeed"
+                },
+                {
+                    "name": "robots.txt",
+                    "link": "admin.marketing.mkt.robots",
+                    "id": "mktrobot"
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "link": "",
+            "submenu": [
+                {
+                    "name": "User Analytic",
+                    "link": "admin.marketing.mkt.useranalytic",
+                    "id": "mktuseranalytic"
+                }
+            ]
+        },
+        {
+            "name": "Setting",
+            "link": "",
+            "submenu": [
+                {
+                    "name": "Google API and status",
+                    "link": "admin.marketing.mktsetting.googleapi",
+                    "id": "mktgoogleapi"
+                }
+            ]
+        }
+    ]
+}
