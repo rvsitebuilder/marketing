@@ -23,7 +23,7 @@ class MarketingComposer
 
     public function registerGoogleSetting(): \stdClass
     {
-        $googleTrackID = config('rvsitebuilder/core.db.mkt_GA_Track_ID');
+        $googleTrackID = config('rvsitebuilder.core.db.mkt_GA_Track_ID');
         $setting = (object) [
             'mkt_GA_Track_ID' => $googleTrackID,
         ];

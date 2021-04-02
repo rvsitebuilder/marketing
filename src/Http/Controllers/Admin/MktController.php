@@ -200,8 +200,8 @@ class MktController extends Controller
         }
 
         //check url error
-        if (preg_match('/localhost/i', $this->webURL) || '' == $this->webURL) {
-            if ('' == $this->webURL) {
+        if (preg_match('/localhost/i', $this->webURL) || $this->webURL == '') {
+            if ($this->webURL == '') {
                 $domainblank = '1';
             }
             if ($request->ajax()) {
@@ -310,8 +310,8 @@ class MktController extends Controller
             ]);
         }
         //check url error
-        if (preg_match('/localhost/i', $this->webURL) || '' == $this->webURL) {
-            if ('' == $this->webURL) {
+        if (preg_match('/localhost/i', $this->webURL) || $this->webURL == '') {
+            if ($this->webURL == '') {
                 $domainblank = '1';
             }
             if ($request->ajax()) {
@@ -652,9 +652,9 @@ class MktController extends Controller
 
         //get google analytic account id/google analytic track ID/user email form db
         //TODO mkt_GA_Acc_ID mkt_GA_Track_ID googleUserProp maybe not need to use
-        $googleAnaAccID = config('rvsitebuilder/core.db.mkt_GA_Acc_ID');
-        $googleTrackID = config('rvsitebuilder/core.db.mkt_GA_Track_ID');
-        $googleWebproID = config('rvsitebuilder/core.db.mkt_GA_Profile_id');
+        $googleAnaAccID = config('rvsitebuilder.core.db.mkt_GA_Acc_ID');
+        $googleTrackID = config('rvsitebuilder.core.db.mkt_GA_Track_ID');
+        $googleWebproID = config('rvsitebuilder.core.db.mkt_GA_Profile_id');
 
         $googleUserProp = Authorisation::where('name', '=', 'default')->first();
 
@@ -677,7 +677,7 @@ class MktController extends Controller
 
         //verify google is setting completed
         $gsettingcompleted = 0;
-        if ('' != $googleAnaAccID && '' != $googleTrackID && '' != $access_token && '' != $refresh_token && '' != $googleWebproID) {
+        if ($googleAnaAccID != '' && $googleTrackID != '' && $access_token != '' && $refresh_token != '' && $googleWebproID != '') {
             $gsettingcompleted = 1;
         }
 
@@ -713,9 +713,15 @@ class MktController extends Controller
             //update to db
             $dbtemp = $client->getAccessToken();
             $date = date_create();
-            Authorisation::where('name', '=', 'default')->update(['access_token' => $dbtemp['access_token']]);
-            Authorisation::where('name', '=', 'default')->update(['created_time' => date_timestamp_get($date)]);
-            Authorisation::where('name', '=', 'default')->update(['expires_in' => $dbtemp['expires_in']]);
+            Authorisation::where('name', '=', 'default')->update([
+'access_token' => $dbtemp['access_token'],
+]);
+            Authorisation::where('name', '=', 'default')->update([
+'created_time' => date_timestamp_get($date),
+]);
+            Authorisation::where('name', '=', 'default')->update([
+'expires_in' => $dbtemp['expires_in'],
+]);
         }
 
         return $client;
@@ -726,17 +732,17 @@ class MktController extends Controller
         $datequery['startdate'] = date('Y-m-d', strtotime('-7 days'));
         $datequery['enddate'] = date('Y-m-d', strtotime('-1 days'));
 
-        if ('today' == $params['startdate']) {
+        if ($params['startdate'] == 'today') {
             $datequery['startdate'] = date('Y-m-d');
             $datequery['enddate'] = date('Y-m-d');
         }
-        if ('yesterday' == $params['startdate']) {
+        if ($params['startdate'] == 'yesterday') {
             $datequery['startdate'] = date('Y-m-d', strtotime('-1 days'));
             $datequery['enddate'] = date('Y-m-d', strtotime('-1 days'));
         }
         if (is_numeric($params['startdate'])) {
             $date = $params['startdate'];
-            $datequery['startdate'] = date('Y-m-d', strtotime("-$date days"));
+            $datequery['startdate'] = date('Y-m-d', strtotime("-${date} days"));
             $datequery['enddate'] = date('Y-m-d', strtotime('-1 days'));
         }
         //debug echo $startdate.' '.$enddate;
@@ -749,7 +755,7 @@ class MktController extends Controller
         $user = posix_getpwuid(posix_getuid());
         $userPath['home'] = App::environmentPath();
 
-        if ('root' == $user['name'] || 'test1' == $user['name']) {
+        if ($user['name'] == 'root' || $user['name'] == 'test1') {
             $userPath['public_html'] = App::environmentPath() . '/html';
         } else {
             $userPath['public_html'] = App::environmentPath() . '/public_html';

@@ -124,25 +124,33 @@ class MktSettingController extends Controller
 
         //setup key google social login
         if (isset($params['GA_API_CLIENT_ID'])) {
-            ENVHelper::setEnv(['GOOGLE_CLIENT_ID' => $params['GA_API_CLIENT_ID']]);
+            ENVHelper::setEnv([
+                'GOOGLE_CLIENT_ID' => $params['GA_API_CLIENT_ID'],
+            ]);
         }
         if (isset($params['GA_API_CLIENT_SECRET'])) {
-            ENVHelper::setEnv(['GOOGLE_CLIENT_SECRET' => $params['GA_API_CLIENT_SECRET']]);
+            ENVHelper::setEnv([
+                'GOOGLE_CLIENT_SECRET' => $params['GA_API_CLIENT_SECRET'],
+            ]);
         }
 
         if ($env_update) {
-            return response()->json(['status' => 'update Success']);
+            return response()->json([
+                'status' => 'update Success',
+            ]);
         }
 
-        return response()->json(['status' => 'update Failed']);
+        return response()->json([
+            'status' => 'update Failed',
+        ]);
     }
 
     public function googleAnalyticAccountSetup(): JsonResponse
     {
         //chk google analytic account config
-        $gaaccid = config('rvsitebuilder/core.db.mkt_GA_Acc_ID');
-        $gatrackid = config('rvsitebuilder/core.db.mkt_GA_Track_ID');
-        $gaproid = config('rvsitebuilder/core.db.mkt_GA_Profile_id');
+        $gaaccid = config('rvsitebuilder.core.db.mkt_GA_Acc_ID');
+        $gatrackid = config('rvsitebuilder.core.db.mkt_GA_Track_ID');
+        $gaproid = config('rvsitebuilder.core.db.mkt_GA_Profile_id');
         if ($gaaccid == '' || $gatrackid == '' || $gaproid == '') {
             return response()->json([
                 'status' => 'Incomplete',
@@ -164,7 +172,7 @@ class MktSettingController extends Controller
             if (empty($accounts->getItems())) {
                 return response()->json([
                     'status' => 'Incomplete',
-                    'message' => "You don't have Google Analytics account. Please register at https://www.google.com/analytics/. "
+                    'message' => "You don't have Google Analytics account. Please register at https://www.google.com/analytics/. ",
                 ]);
             }
             foreach ($accounts->getItems() as $item) {
@@ -174,23 +182,39 @@ class MktSettingController extends Controller
                     if (empty($webproperties->getItems())) {
                         return response()->json([
                             'status' => 'Incomplete',
-                            'message' => "Your website is not registered in Google Analytics yet. Please register at https://www.google.com/analytics/.", 'คุณไม่มี web property ใดๆ ที่เคยสร้างไว้เลย (Google Analytic Account ID ' . $gaaccid . ')',
+                            'message' => 'Your website is not registered in Google Analytics yet. Please register at https://www.google.com/analytics/.',
+                            'คุณไม่มี web property ใดๆ ที่เคยสร้างไว้เลย (Google Analytic Account ID ' . $gaaccid . ')',
                         ]);
                     }
                     foreach ($webproperties->getItems() as $webitem) {
                         if ($webitem['websiteUrl'] == url('/')) {
                             //saveconfig
                             CoreConfig::updateOrCreate(
-                                ['key' => 'rvsitebuilder/core.mkt_GA_Acc_ID'],
-                                ['key' => 'rvsitebuilder/core.mkt_GA_Acc_ID', 'value' => $gaaccid]
+                                [
+                                    'key' => 'rvsitebuilder/core.mkt_GA_Acc_ID',
+                                ],
+                                [
+                                    'key' => 'rvsitebuilder/core.mkt_GA_Acc_ID',
+                                    'value' => $gaaccid,
+                                ]
                             );
                             CoreConfig::updateOrCreate(
-                                ['key' => 'rvsitebuilder/core.mkt_GA_Track_ID'],
-                                ['key' => 'rvsitebuilder/core.mkt_GA_Track_ID', 'value' => $webitem['id']]
+                                [
+                                    'key' => 'rvsitebuilder/core.mkt_GA_Track_ID',
+                                ],
+                                [
+                                    'key' => 'rvsitebuilder/core.mkt_GA_Track_ID',
+                                    'value' => $webitem['id'],
+                                ]
                             );
                             CoreConfig::updateOrCreate(
-                                ['key' => 'rvsitebuilder/core.mkt_GA_Profile_id'],
-                                ['key' => 'rvsitebuilder/core.mkt_GA_Profile_id', 'value' => $webitem['defaultProfileId']]
+                                [
+                                    'key' => 'rvsitebuilder/core.mkt_GA_Profile_id',
+                                ],
+                                [
+                                    'key' => 'rvsitebuilder/core.mkt_GA_Profile_id',
+                                    'value' => $webitem['defaultProfileId'],
+                                ]
                             );
 
                             return response()->json([
@@ -222,7 +246,6 @@ class MktSettingController extends Controller
             'message' => "You're allowing an Email Address which is not found in Google Analytics accounts. Please check Email Address or Google API connection again.",
         ]);
     }
-
 
     public function googleAnalyticIDSetup(Request $request): JsonResponse
     {
@@ -259,16 +282,31 @@ class MktSettingController extends Controller
                     if ($webitem['websiteUrl'] == url('/') && $params['GAID'] == $webitem['id']) {
                         //saveconfig
                         CoreConfig::updateOrCreate(
-                            ['key' => 'rvsitebuilder/core.mkt_GA_Acc_ID'],
-                            ['key' => 'rvsitebuilder/core.mkt_GA_Acc_ID', 'value' => $item['id']]
+                            [
+                                'key' => 'rvsitebuilder/core.mkt_GA_Acc_ID',
+                            ],
+                            [
+                                'key' => 'rvsitebuilder/core.mkt_GA_Acc_ID',
+                                'value' => $item['id'],
+                            ]
                         );
                         CoreConfig::updateOrCreate(
-                            ['key' => 'rvsitebuilder/core.mkt_GA_Track_ID'],
-                            ['key' => 'rvsitebuilder/core.mkt_GA_Track_ID', 'value' => $params['GAID']]
+                            [
+                                'key' => 'rvsitebuilder/core.mkt_GA_Track_ID',
+                            ],
+                            [
+                                'key' => 'rvsitebuilder/core.mkt_GA_Track_ID',
+                                'value' => $params['GAID'],
+                            ]
                         );
                         CoreConfig::updateOrCreate(
-                            ['key' => 'rvsitebuilder/core.mkt_GA_Profile_id'],
-                            ['key' => 'rvsitebuilder/core.mkt_GA_Profile_id', 'value' => $webitem['defaultProfileId']]
+                            [
+                                'key' => 'rvsitebuilder/core.mkt_GA_Profile_id',
+                            ],
+                            [
+                                'key' => 'rvsitebuilder/core.mkt_GA_Profile_id',
+                                'value' => $webitem['defaultProfileId'],
+                            ]
                         );
 
                         return response()->json([
@@ -296,9 +334,9 @@ class MktSettingController extends Controller
 
     public function googleAnalyticAddGoogleAnaJS(): JsonResponse
     {
-        $gatrackid = config('rvsitebuilder/core.db.mkt_GA_Track_ID');
-        $gaaccid = config('rvsitebuilder/core.db.mkt_GA_Acc_ID');
-        $gaproid = config('rvsitebuilder/core.db.mkt_GA_Profile_id');
+        $gatrackid = config('rvsitebuilder.core.db.mkt_GA_Track_ID');
+        $gaaccid = config('rvsitebuilder.core.db.mkt_GA_Acc_ID');
+        $gaproid = config('rvsitebuilder.core.db.mkt_GA_Profile_id');
         if ($gatrackid == '' || $gaaccid == '' || $gaproid == '') {
             return response()->json([
                 'status' => 'Incomplete',
@@ -388,7 +426,7 @@ class MktSettingController extends Controller
             }
 
             //get google analytic account id
-            $gaaccid = config('rvsitebuilder/core.db.mkt_GA_Acc_ID');
+            $gaaccid = config('rvsitebuilder.core.db.mkt_GA_Acc_ID');
 
             if ($gaaccid != '') {
                 echo 'Account web properties<br>';
@@ -494,7 +532,9 @@ class MktSettingController extends Controller
                 return 'Complete';
             }
         } catch (Google_Service_Exception $exception) {
-            $verify = ['error' => $exception->getErrors()[0]['message']];
+            $verify = [
+                'error' => $exception->getErrors()[0]['message'],
+            ];
 
             return 'Incomplete ' . $errors;
         }
@@ -538,7 +578,9 @@ class MktSettingController extends Controller
         try {
             $verify = $webResource->insert('FILE', $request);
         } catch (Google_Service_Exception $exception) {
-            $verify = ['error' => $exception->getErrors()[0]['message']];
+            $verify = [
+                'error' => $exception->getErrors()[0]['message'],
+            ];
         }
 
         if ($verify->id && strpos(urldecode($verify->id), $siteUrl) !== false) {
@@ -585,9 +627,15 @@ class MktSettingController extends Controller
             //update to db
             $dbtemp = $client->getAccessToken();
             $date = date_create();
-            Authorisation::where('name', '=', 'default')->update(['access_token' => $dbtemp['access_token']]);
-            Authorisation::where('name', '=', 'default')->update(['created_time' => date_timestamp_get($date)]);
-            Authorisation::where('name', '=', 'default')->update(['expires_in' => $dbtemp['expires_in']]);
+            Authorisation::where('name', '=', 'default')->update([
+                'access_token' => $dbtemp['access_token'],
+            ]);
+            Authorisation::where('name', '=', 'default')->update([
+                'created_time' => date_timestamp_get($date),
+            ]);
+            Authorisation::where('name', '=', 'default')->update([
+                'expires_in' => $dbtemp['expires_in'],
+            ]);
         }
 
         return $client;

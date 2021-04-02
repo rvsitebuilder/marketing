@@ -56,7 +56,9 @@ class MarketingServiceProvider extends ServiceProvider
 
     public function defineVendorPublish(): void
     {
-        $this->publishes([__DIR__ . '/../public' => public_path('vendor/rvsitebuilder/marketing')], 'public');
+        $this->publishes([
+            __DIR__ . '/../public' => public_path('vendor/rvsitebuilder/marketing'),
+        ], 'public');
     }
 
     /**
@@ -89,7 +91,7 @@ class MarketingServiceProvider extends ServiceProvider
      */
     protected function registerConfig(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'rvsitebuilder/marketing');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'rvsitebuilder.marketing');
     }
 
     protected function defineHideFromHyperlinkList(): void
