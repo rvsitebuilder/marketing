@@ -191,28 +191,28 @@ class MktSettingController extends Controller
                             //saveconfig
                             CoreConfig::updateOrCreate(
                                 [
-                                    'key' => 'rvsitebuilder/core.mkt_GA_Acc_ID',
+                                    'key' => 'rvsitebuilder.core.mkt_GA_Acc_ID',
                                 ],
                                 [
-                                    'key' => 'rvsitebuilder/core.mkt_GA_Acc_ID',
+                                    'key' => 'rvsitebuilder.core.mkt_GA_Acc_ID',
                                     'value' => $gaaccid,
                                 ]
                             );
                             CoreConfig::updateOrCreate(
                                 [
-                                    'key' => 'rvsitebuilder/core.mkt_GA_Track_ID',
+                                    'key' => 'rvsitebuilder.core.mkt_GA_Track_ID',
                                 ],
                                 [
-                                    'key' => 'rvsitebuilder/core.mkt_GA_Track_ID',
+                                    'key' => 'rvsitebuilder.core.mkt_GA_Track_ID',
                                     'value' => $webitem['id'],
                                 ]
                             );
                             CoreConfig::updateOrCreate(
                                 [
-                                    'key' => 'rvsitebuilder/core.mkt_GA_Profile_id',
+                                    'key' => 'rvsitebuilder.core.mkt_GA_Profile_id',
                                 ],
                                 [
-                                    'key' => 'rvsitebuilder/core.mkt_GA_Profile_id',
+                                    'key' => 'rvsitebuilder.core.mkt_GA_Profile_id',
                                     'value' => $webitem['defaultProfileId'],
                                 ]
                             );
@@ -283,28 +283,28 @@ class MktSettingController extends Controller
                         //saveconfig
                         CoreConfig::updateOrCreate(
                             [
-                                'key' => 'rvsitebuilder/core.mkt_GA_Acc_ID',
+                                'key' => 'rvsitebuilder.core.mkt_GA_Acc_ID',
                             ],
                             [
-                                'key' => 'rvsitebuilder/core.mkt_GA_Acc_ID',
+                                'key' => 'rvsitebuilder.core.mkt_GA_Acc_ID',
                                 'value' => $item['id'],
                             ]
                         );
                         CoreConfig::updateOrCreate(
                             [
-                                'key' => 'rvsitebuilder/core.mkt_GA_Track_ID',
+                                'key' => 'rvsitebuilder.core.mkt_GA_Track_ID',
                             ],
                             [
-                                'key' => 'rvsitebuilder/core.mkt_GA_Track_ID',
+                                'key' => 'rvsitebuilder.core.mkt_GA_Track_ID',
                                 'value' => $params['GAID'],
                             ]
                         );
                         CoreConfig::updateOrCreate(
                             [
-                                'key' => 'rvsitebuilder/core.mkt_GA_Profile_id',
+                                'key' => 'rvsitebuilder.core.mkt_GA_Profile_id',
                             ],
                             [
-                                'key' => 'rvsitebuilder/core.mkt_GA_Profile_id',
+                                'key' => 'rvsitebuilder.core.mkt_GA_Profile_id',
                                 'value' => $webitem['defaultProfileId'],
                             ]
                         );
