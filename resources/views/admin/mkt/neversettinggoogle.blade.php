@@ -35,8 +35,8 @@
     <div class="uk-grid">
         <div class="uk-width-medium-1-3 uk-margin-bottom">
             <div class="uk-panel uk-panel-box height-s">
-            	<h3>Top Channel</h3>
-            	<div align="center"><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-channel.png" width="372" height="293" alt=""></div>
+                <h3>Top Channel</h3>
+                <div align="center"><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-channel.png" width="372" height="293" alt=""></div>
             </div>
         </div>
         <div class="uk-width-medium-2-3">
@@ -49,8 +49,8 @@
     <div class="uk-grid">
         <div class="uk-width-medium-1-2 uk-margin-bottom">
             <div class="uk-panel uk-panel-box height-m">
-            	<h3>Top Keyword</h3>
-            	<div><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-top-page.png" width="1040" height="475" alt=""></div>
+                <h3>Top Keyword</h3>
+                <div><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-top-page.png" width="1040" height="475" alt=""></div>
             </div>
         </div>
         <div class="uk-width-medium-1-2">
@@ -59,9 +59,9 @@
             <div align="center"><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-landing-page.png" width="940" height="427" alt=""></div>
             </div>
         </div>
-	</div>
-	<div class="uk-grid">
-		<div class="uk-width-medium-1-3 uk-margin-bottom">
+    </div>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-3 uk-margin-bottom">
             <div class="uk-panel uk-panel-box  height-l">
             <h3>Visitors</h3>
             <div align="center"><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-country.png" width="288" height="409" alt=""></div>
@@ -70,17 +70,17 @@
         <div class="uk-width-medium-1-3 uk-margin-bottom">
             <div class="uk-panel uk-panel-box  height-l">
             <h3>User top devices</h3>
-            	<div align="center"><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-device.png" width="290" height="405" alt=""></div>
+                <div align="center"><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-device.png" width="290" height="405" alt=""></div>
             </div>
         </div>
         <div class="uk-width-medium-1-3 uk-margin-bottom">
             <div class="uk-panel uk-panel-box  height-l">
             <h3>Where are your users</h3>
-            	<div align="center"><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-active-user.png" width="438" height="358" alt=""></div>
+                <div align="center"><img src="{{ config('rvsitebuilder.wysiwyg.wex.url.WYS_IMG_URL') }}/images/admin/analytic/analytic-active-user.png" width="438" height="358" alt=""></div>
             </div>
         </div>
-	</div>
-	</div>
+    </div>
+    </div>
 
 </div>
 @endsection

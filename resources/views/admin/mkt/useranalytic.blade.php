@@ -34,7 +34,7 @@
 <script>
 
 gapi.analytics.ready(function() {
-// 	alert('to function');
+//     alert('to function');
     // Authorize the user.
     // CLIENT_ID = 'xxxxxxxxxx';don't use this but use access_token that allow on the first one
     gapi.analytics.auth.authorize({
@@ -49,20 +49,20 @@ gapi.analytics.ready(function() {
 
 @section('content')
  <div class="rv-useranalytic-content">
-	<div class="uk-grid">
-		<div class="rv-panel-box-width">
-			@include('rvsitebuilder/marketing::admin.mkt.includes.visitor')
-		</div>
-		<div class=rv-panel-box-width">
-			@include('rvsitebuilder/marketing::admin.mkt.includes.topdevice')
-		</div>
-		<div class="rv-panel-box-width">
-			@include('rvsitebuilder/marketing::admin.mkt.includes.usercountry')
-		</div>
-		<div class="rv-panel-box-width-medium">
-			@include('rvsitebuilder/marketing::admin.mkt.includes.timeuservisit')
-		</div>
-	</div>
+    <div class="uk-grid">
+        <div class="rv-panel-box-width">
+            @include('rvsitebuilder/marketing::admin.mkt.includes.visitor')
+        </div>
+        <div class=rv-panel-box-width">
+            @include('rvsitebuilder/marketing::admin.mkt.includes.topdevice')
+        </div>
+        <div class="rv-panel-box-width">
+            @include('rvsitebuilder/marketing::admin.mkt.includes.usercountry')
+        </div>
+        <div class="rv-panel-box-width-medium">
+            @include('rvsitebuilder/marketing::admin.mkt.includes.timeuservisit')
+        </div>
+    </div>
  </div>
 
 

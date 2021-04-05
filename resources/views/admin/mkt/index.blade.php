@@ -55,14 +55,14 @@ gapi.analytics.ready(function() {
 <!--Create the containing elements. -->
 
  <div class="rv-useranalytic-content">
-	<div class="uk-grid">
-		<div class="rv-panel-box-width">
-		  @include('rvsitebuilder/marketing::admin.mkt.includes.acquire')
-		</div>
-		<div>
-		  @include('rvsitebuilder/marketing::admin.mkt.includes.performance')
-		</div>
-	</div>
+    <div class="uk-grid">
+        <div class="rv-panel-box-width">
+          @include('rvsitebuilder/marketing::admin.mkt.includes.acquire')
+        </div>
+        <div>
+          @include('rvsitebuilder/marketing::admin.mkt.includes.performance')
+        </div>
+    </div>
 </div>
 
 
