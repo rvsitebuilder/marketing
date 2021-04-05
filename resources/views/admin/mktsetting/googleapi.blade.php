@@ -1,7 +1,7 @@
 @extends('rvsitebuilder/marketing::admin.layouts.app')
 
-@push('package-scripts') 
-             
+@push('package-scripts')
+
 <!-- Laravel Javascript Validation -->
 <!-- Vendor JS/CSS already loaded on master layout -->
 <!-- <script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>  -->
@@ -13,18 +13,18 @@
 $(document).ready(function() {
 
 	//if set focus div
-	var href = '@if(isset($location_href)){{$location_href}}@else{{''}}@endif';
+	var href = '@isset($location_href) {{$location_href}}@else{{''}} @endisset ';
 	if (href != '') {
 		location.href = href ;
 	}
 
-	//set client and secret value if it 
+	//set client and secret value if it
 	$.ajax({
         url: '{!! route("admin.marketing.mktsetting.getGoogleClientValue") !!}',
         type: 'get',
         data: {},
         success: function( data ) {
-        	
+
         	if(data.clientid != ''){
         		$("#clientid").val(data.clientid);
         	}
@@ -41,8 +41,8 @@ $(document).ready(function() {
         	} else {
         		$("#btnsetup").html('Setup');
         	}
-            		
-        }         
+
+        }
 	});
 
 	//Ajax Callback
@@ -60,7 +60,7 @@ $(document).ready(function() {
     		}
     	});
 	}
-	
+
 	//check GA account ID setup
 	var param = {};
   	var url = '{!! route("admin.marketing.mktsetting.googleAnalyticAccountSetup") !!}';
@@ -71,8 +71,8 @@ $(document).ready(function() {
     		$("#GAIDtxt").val(data.tracid);
     		$("#GAIDsubmit").val('Edit Google Tracking ID');
     		$("#GAaccountsetup").attr("class","uk-text-success");
-    		
-    		//check google js tracker 
+
+    		//check google js tracker
     		$("#addGoogleJS").html('<i class=".uk-icon-spin">Wait</i>');
     		var param = {};
     	  	var url = '{!! route("admin.marketing.mktsetting.googleAnalyticAddGoogleAnaJS") !!}';
@@ -85,10 +85,10 @@ $(document).ready(function() {
             		$("#addGoogleJS").arrt("class","uk-text-warning");
             	}
     	  	});
-    		
+
     	} else {
         }
-	});	
+	});
 
   	//in case tracking id is included
   	$('#GAIDsubmit').on('click', function() {
@@ -104,7 +104,7 @@ $(document).ready(function() {
         		$("#GAIDsubmit").val('Edit Google Tracking ID');
         		$("#GAaccountsetup").attr("class","uk-text-success");
 
-        		//check google js tracker 
+        		//check google js tracker
         		$("#addGoogleJS").html('<i class=".uk-icon-spin">Wait</i>');
         		var param = {};
         	  	var url = '{!! route("admin.marketing.mktsetting.googleAnalyticAddGoogleAnaJS") !!}';
@@ -117,14 +117,14 @@ $(document).ready(function() {
                 		$("#addGoogleJS").attr("class","uk-text-warning");
                 	}
         	  	});
-        		
+
         	} else {
-        		
+
             }
   	  	});
-    
-    });	
-	
+
+    });
+
 
 
 	//add your website to search console
@@ -138,22 +138,22 @@ $(document).ready(function() {
     		$("#verifySiteSearchConsole").html(data.siteverify);
     		$("#gSearchMessaage").attr({title: 'Add site '+data.sitename+' '+data.siteadd});
     		$("#gVerifyMessaage").attr({title: 'Verify site '+data.sitename+' '+data.siteverify});
-    		 
+
         	if(data.siteadd == 'Complete'){
         		$("#addSiteSearchConsole").attr("class","uk-text-success");
         		$("#addSiteError").hide();
-        	} 
+        	}
         	if(data.siteverify == 'Complete') {
         		$("#verifySiteSearchConsole").attr("class","uk-text-success");
         		$("#verifySiteError").hide();
-        	} 
-            		
-        }         
+        	}
+
+        }
 	});
-	
-	
-    
-    	    
+
+
+
+
 });
 //end ajax check google setup
 </script>
@@ -189,7 +189,7 @@ $(document).ready(function() {
 <div class="uk-grid" id="googleAnalytic">
     <div class="uk-width-medium-1-1">
         <div class="uk-panel uk-panel-box">
-        
+
             <h2 class="uk-panel-title"><i class="uk-icon-pie-chart rv-gicon-color"></i> @lang('rvsitebuilder/marketing::addon.Google.GoogleAnalyticTitle')</h2>
             <p>@lang('rvsitebuilder/marketing::addon.Google.GoogleTracking')</p>
             <p>@lang('rvsitebuilder/marketing::addon.Google.GoogleAnalytic')</p>
@@ -200,7 +200,7 @@ $(document).ready(function() {
         	</div>
         	<div>
             	<span  class="uk-text-primary" >@lang('rvsitebuilder/marketing::addon.GoogleAPISetup.google-analytic') @lang('rvsitebuilder/marketing::addon.GoogleAPISetup.tracking-id')  {{ secure_url('/') }} : </span>
-            	<input id="GAIDtxt" type="text" placeholder="UA-0123456789-1"/> 
+            	<input id="GAIDtxt" type="text" placeholder="UA-0123456789-1"/>
             	<input class="uk-button uk-button-primary" id="GAIDsubmit" type="button" value="Submit Google Tracking ID" />
             </div>
         	<div>
@@ -229,7 +229,7 @@ $(document).ready(function() {
         		<span id="gVerifyMessaage" data-uk-tooltip="{pos:'bottom-left'}" title="Your website {{ secure_url('/') }}  is not verified in Google Search Console yet." ><i class="uk-icon-question-circle"></i></span>
         		<span id="verifySiteError"  ></span>
         	</div>
-        	<!-- 
+        	<!--
         	<div>
         		<span class="uk-text-primary" >Submit sitemap.xml ({{ secure_url('/sitemap.xml') }}) to google search console</span><span class="uk-text-success" id="submitSiteMapSearchConsole"></span>
        			<span id="submitSitemapError" style="display:none" ><a href="https://support.google.com/webmasters/answer/35179">how to verify site to google search console</a></span>

@@ -71,7 +71,7 @@ $(document).ready(function() {
     <h2>Robot source code</h2>
 	<div class="uk-form-row">
 		<textarea id="robotscontent" cols="50" rows="15" placeholder=""
-			style="align-content: right;">@if(isset($robot_content)){{$robot_content}}@endif
+			style="align-content: right;">@isset($robot_content) {{$robot_content}} @endisset
         </textarea>
 	</div>
 
