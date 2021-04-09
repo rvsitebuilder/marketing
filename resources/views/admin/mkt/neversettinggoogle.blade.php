@@ -5,7 +5,7 @@
                <!--Show Mobile Only-->
                 <div class="card-body max-width uk-visible-small">
                 <div class="rv-notemobile">
-                   @lang('rvsitebuilder/marketing::addon.Marketing.warnning')
+                   @lang('rvsitebuilder/marketing::addon.Marketing.warning')
                 </div>
                 </div>
                 <!--End Show Mobile Only-->
