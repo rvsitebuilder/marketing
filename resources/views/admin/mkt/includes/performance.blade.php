@@ -14,7 +14,7 @@
     </div>
 </div>
 @push('package-scripts')
-<script>
+<script nonce="{{ csrf_token() }}">
 gapi.analytics.ready(function() {
      //Create the timeline chart.
      var commonConfigTable = {

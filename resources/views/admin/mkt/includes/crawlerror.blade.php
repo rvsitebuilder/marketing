@@ -135,7 +135,7 @@
 </div>
 
 @push('package-scripts')
-<script>
+<script nonce="{{ csrf_token() }}">
     google.charts.load('current', {'packages':['table']});
 
     //count error type

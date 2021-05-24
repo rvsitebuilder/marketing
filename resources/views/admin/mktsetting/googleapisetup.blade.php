@@ -1,7 +1,7 @@
 @extends('rvsitebuilder/marketing::admin.layouts.app')
 
 @push('package-scripts')
-<script>
+<script nonce="{{ csrf_token() }}">
 $(document).ready(function() {
     var clientsetup = '{!! route("admin.marketing.mktsetting.clientsetup") !!}'
     $('#googleClientID,#googleClientSecret').keyup(function () {

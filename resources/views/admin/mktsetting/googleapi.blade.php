@@ -8,7 +8,7 @@
 {!! JsValidator::formRequest('Rvsitebuilder\Marketing\Http\Requests\MktsettingRequest', '#create_item_form'); !!}
 {!! JsValidator::formRequest('Rvsitebuilder\Marketing\Http\Requests\MktsettingRequest', '#update_item_form'); !!}
 
-<script>
+<script nonce="{{ csrf_token() }}">
 //start ajax check google setup
 $(document).ready(function() {
 

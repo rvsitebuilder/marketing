@@ -3,7 +3,7 @@
 
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ $googleSetting->mkt_GA_Track_ID }}"></script>
 
-        <script>
+        <script nonce="{{ csrf_token() }}">
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());

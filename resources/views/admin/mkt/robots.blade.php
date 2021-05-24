@@ -1,7 +1,7 @@
 @extends('rvsitebuilder/marketing::admin.layouts.app')
 
 @push('package-scripts')
-<script>
+<script nonce="{{ csrf_token() }}">
     routeMktIndex = '{!! route("admin.marketing.mkt.index") !!}';
 </script>
 
@@ -18,7 +18,7 @@
 <!-- *************************************************************** -->
 
 <!-- start action -->
-<script>
+<script nonce="{{ csrf_token() }}">
 $(document).ready(function() {
 
     $('#robotssave').on('click', function() {

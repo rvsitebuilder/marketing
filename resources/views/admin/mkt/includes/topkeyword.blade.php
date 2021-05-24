@@ -11,7 +11,7 @@
 <div id="SearchAnalyticQueryData"></div>
 </div>
 @push('package-scripts')
-<script>
+<script nonce="{{ csrf_token() }}">
     google.charts.load('current', {'packages':['table']});
 
     //create table

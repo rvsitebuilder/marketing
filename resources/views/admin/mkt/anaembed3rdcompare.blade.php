@@ -1,4 +1,4 @@
-<script>
+<script nonce="{{ csrf_token() }}">
 (function(w,d,s,g,js,fjs){
   g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
   js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
@@ -26,7 +26,7 @@
 <!-- Include the CSS that styles the charts. -->
 <link rel="stylesheet" href="https://ga-dev-tools.appspot.com/public/css/chartjs-visualizations.css">
 
-<script>
+<script nonce="{{ csrf_token() }}">
 gapi.analytics.ready(function() {
 
     gapi.analytics.auth.authorize({

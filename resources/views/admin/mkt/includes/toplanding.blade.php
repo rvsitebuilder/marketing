@@ -11,7 +11,7 @@
 <div id="searchAnalyticPageData"></div>
 </div>
 @push('package-scripts')
-<script>
+<script nonce="{{ csrf_token() }}">
     google.charts.load('current', {'packages':['table']});
 
     google.charts.setOnLoadCallback(drawTableToplanding);

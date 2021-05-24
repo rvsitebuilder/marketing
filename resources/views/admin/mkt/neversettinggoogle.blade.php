@@ -12,7 +12,7 @@
 
 @lang('rvsitebuilder/marketing::addon.Marketing.title')
 <div>
-            {{-- <script>
+            {{-- <script nonce="{{ csrf_token() }}">
                     console.pop.error({
                         text: "@lang('rvsitebuilder/marketing::addon.Marketing.Report')"
                     })
@@ -88,7 +88,7 @@
 @push('package-scripts')
 
     @empty(config('services.google.client_id') && config('services.google.client_secret'))
-    <script>
+    <script nonce="{{ csrf_token() }}">
             console.pop.notice({
                 title: 'Warning',
                 text: '{{ __('rvsitebuilder/marketing::addon.Marketing.Report') }}'
