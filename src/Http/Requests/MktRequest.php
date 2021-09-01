@@ -23,8 +23,8 @@ class MktRequest extends FormRequest
     {
         //TODO Update validation rules
         return [
-                '1' => 'required',
-                '2' => 'required',
+            '1' => 'required',
+            '2' => 'required',
         ];
     }
 
@@ -35,8 +35,8 @@ class MktRequest extends FormRequest
     {
         //TODO language system
         return [
-                '1.required' => __('rvsitebuilder/marketing::validation.Mkt.Mkt1'),
-                '2.required' => __('rvsitebuilder/marketing::validation.Mkt.Mkt2'),
+            '1.required' => __('rvsitebuilder/marketing::validation.Mkt.Mkt1'),
+            '2.required' => __('rvsitebuilder/marketing::validation.Mkt.Mkt2'),
         ];
     }
 }

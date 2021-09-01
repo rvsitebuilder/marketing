@@ -85,10 +85,11 @@ class GoogleApiController extends BaseController
         $auth->scopes = $scopes;
 
         // Additional scopes can be added during an authentication, adding to
-        // what is already authorised.
+        // what is already authorize.
 
-        if ($add_scopes = (array) $request->input(static::ADD_SCOPES_PARAM_NAME, [])) {
-            $auth->addScope($add_scopes);
+        $addScopes = (array) $request->input(static::ADD_SCOPES_PARAM_NAME, []);
+        if ($addScopes) {
+            $auth->addScope($addScopes);
         }
 
         $auth->save();

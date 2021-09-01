@@ -714,14 +714,14 @@ class MktController extends Controller
             $dbtemp = $client->getAccessToken();
             $date = date_create();
             Authorisation::where('name', '=', 'default')->update([
-'access_token' => $dbtemp['access_token'],
-]);
+                'access_token' => $dbtemp['access_token'],
+            ]);
             Authorisation::where('name', '=', 'default')->update([
-'created_time' => date_timestamp_get($date),
-]);
+                'created_time' => date_timestamp_get($date),
+            ]);
             Authorisation::where('name', '=', 'default')->update([
-'expires_in' => $dbtemp['expires_in'],
-]);
+                'expires_in' => $dbtemp['expires_in'],
+            ]);
         }
 
         return $client;
