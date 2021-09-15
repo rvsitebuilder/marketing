@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Rvsitebuilder\Marketing\Models\Authorisation;
 
 class MktController extends Controller
@@ -652,9 +653,9 @@ class MktController extends Controller
 
         //get google analytic account id/google analytic track ID/user email form db
         //TODO mkt_GA_Acc_ID mkt_GA_Track_ID googleUserProp maybe not need to use
-        $googleAnaAccID = config('rvsitebuilder.core.db.mkt_GA_Acc_ID');
-        $googleTrackID = config('rvsitebuilder.core.db.mkt_GA_Track_ID');
-        $googleWebproID = config('rvsitebuilder.core.db.mkt_GA_Profile_id');
+        $googleAnaAccID = config('rvsitebuilder.core.mkt_GA_Acc_ID');
+        $googleTrackID = config('rvsitebuilder.core.mkt_GA_Track_ID');
+        $googleWebproID = config('rvsitebuilder.core.mkt_GA_Profile_id');
 
         $googleUserProp = Authorisation::where('name', '=', 'default')->first();
 
@@ -667,6 +668,7 @@ class MktController extends Controller
         try {
             $client = $this->_getGoogleClient();
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             $client = null;
         }
         if ($client) {
@@ -701,6 +703,7 @@ class MktController extends Controller
             //dd(\Lib\Vendor\GoogleAPI\Helper::getCurrentUserAuth('default'));
             $client = \Lib\Vendor\GoogleAPI\Helper::getApiClient(\Lib\Vendor\GoogleAPI\Helper::getCurrentUserAuth('default'));
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             // Invalid credentials, or any other error in the API request.
             $client = null;
         }

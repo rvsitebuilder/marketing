@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Lib\Util\ENVHelper;
 use Rvsitebuilder\Core\Models\CoreConfig;
 use Rvsitebuilder\Marketing\Models\Authorisation;
@@ -148,9 +149,9 @@ class MktSettingController extends Controller
     public function googleAnalyticAccountSetup(): JsonResponse
     {
         //chk google analytic account config
-        $gaaccid = config('rvsitebuilder.core.db.mkt_GA_Acc_ID');
-        $gatrackid = config('rvsitebuilder.core.db.mkt_GA_Track_ID');
-        $gaproid = config('rvsitebuilder.core.db.mkt_GA_Profile_id');
+        $gaaccid = config('rvsitebuilder.core.mkt_GA_Acc_ID');
+        $gatrackid = config('rvsitebuilder.core.mkt_GA_Track_ID');
+        $gaproid = config('rvsitebuilder.core.mkt_GA_Profile_id');
         if ($gaaccid == '' || $gatrackid == '' || $gaproid == '') {
             return response()->json([
                 'status' => 'Incomplete',
@@ -164,6 +165,7 @@ class MktSettingController extends Controller
             $service = new Google_Service_Analytics($client);
             $accounts = $service->management_accountSummaries->listManagementAccountSummaries();
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             // Invalid credentials, or any other error in the API request.
             $client = null;
         }
@@ -257,6 +259,7 @@ class MktSettingController extends Controller
             $service = new Google_Service_Analytics($client);
             $accounts = $service->management_accountSummaries->listManagementAccountSummaries();
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             // Invalid credentials, or any other error in the API request.
             $client = null;
         }
@@ -334,9 +337,9 @@ class MktSettingController extends Controller
 
     public function googleAnalyticAddGoogleAnaJS(): JsonResponse
     {
-        $gatrackid = config('rvsitebuilder.core.db.mkt_GA_Track_ID');
-        $gaaccid = config('rvsitebuilder.core.db.mkt_GA_Acc_ID');
-        $gaproid = config('rvsitebuilder.core.db.mkt_GA_Profile_id');
+        $gatrackid = config('rvsitebuilder.core.mkt_GA_Track_ID');
+        $gaaccid = config('rvsitebuilder.core.mkt_GA_Acc_ID');
+        $gaproid = config('rvsitebuilder.core.mkt_GA_Profile_id');
         if ($gatrackid == '' || $gaaccid == '' || $gaproid == '') {
             return response()->json([
                 'status' => 'Incomplete',
@@ -383,6 +386,7 @@ class MktSettingController extends Controller
                 'sitename' => url('/'),
             ]);
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             // Invalid credentials, or any other error in the API request.
             $client = null;
         }
@@ -408,6 +412,7 @@ class MktSettingController extends Controller
             $service = new Google_Service_Analytics($client);
             $accounts = $service->management_accountSummaries->listManagementAccountSummaries();
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             // Invalid credentials, or any other error in the API request.
             $client = null;
         }
@@ -426,7 +431,7 @@ class MktSettingController extends Controller
             }
 
             //get google analytic account id
-            $gaaccid = config('rvsitebuilder.core.db.mkt_GA_Acc_ID');
+            $gaaccid = config('rvsitebuilder.core.mkt_GA_Acc_ID');
 
             if ($gaaccid != '') {
                 echo 'Account web properties<br>';
@@ -502,6 +507,7 @@ class MktSettingController extends Controller
             //$client = \Academe\GoogleApi\Helper::getApiClient(\Academe\GoogleApi\Helper::getCurrentUserAuth('default'));
             $client = \Lib\Vendor\GoogleAPI\Helper::getApiClient(\Lib\Vendor\GoogleAPI\Helper::getCurrentUserAuth('default'));
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             $client = null;
         }
         if ($client) {
@@ -615,6 +621,7 @@ class MktSettingController extends Controller
             //$client = \Academe\GoogleApi\Helper::getApiClient(\Academe\GoogleApi\Helper::getCurrentUserAuth('default'));
             $client = \Lib\Vendor\GoogleAPI\Helper::getApiClient(\Lib\Vendor\GoogleAPI\Helper::getCurrentUserAuth('default'));
         } catch (Exception $e) {
+            Log::error($e->getMessage());
             // Invalid credentials, or any other error in the API request.
             $client = null;
         }
