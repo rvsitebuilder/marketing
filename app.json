@@ -1,8 +1,8 @@
 {
     "name": "rvsitebuilder/marketing",
     "alias": "Marketing",
-    "description": "",
-    "keywords": [],
+    "description": "Website analytics tools that can either report or expand the result you get with Google Analytics and Google Webmaster Tools.",
+    "keywords": ["laravel", "marketing", "google Analytics", "data Analytics"],
     "app-launcher": 1,
     "app-launcher-route": "admin.marketing.mkt.index",
     "icon": "/vendor/rvsitebuilder/marketing/images/icon-app_marketing.png",

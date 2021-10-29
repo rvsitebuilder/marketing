@@ -30,26 +30,26 @@ return [
     'error 500 description' => 'An administrator was notified.',
 
     'Marketing' => [
-            'Report' => 'There is no data to report. Please setup Google API or make sure if the setup is complete.',
-            'GoogleAPI' => '<p>Google API will work to get your website performance report from Google Analytics to show in THIS PAGE. It will also be used for Google Search Console setup to manage your search results from google.com.</p>
-                            <p>Google Analytics is the website performance report to let you know the activities of website visitors, their countries, cities, the referal of how they knowed your website, and more.</p>
-                            <p>Google Search Console will monitor search result of your website on search engine such as google.com to let you analyse your SEO for the best solution.</p>',
-            'GoToSetup' => 'Go to setup',
-            'GoogleAPIeasyGuideForBeginner' => 'Google API Setup Easy Guide',
-            'title' => '<h2>Website Analytic Report by Google</h2>',
-            'warnning' => "<p>If you want to edit website or update website's marketing. <u>Please login at https://rvwizard.com on desktop.</u></p>
+        'Report' => 'There is no data to report. Please setup Google API or make sure if the setup is complete.',
+        'GoogleAPI' => '<p>Google API will work to get your website performance report from Google Analytics to show in THIS PAGE. It will also be used for Google Search Console setup to manage your search results from google.com.</p>
+                        <p>Google Analytics is the website performance report to let you know the activities of website visitors, their countries, cities, the referral of how they know your website, and more.</p>
+                        <p>Google Search Console will monitor search result of your website on search engine such as google.com to let you analyse your SEO for the best solution.</p>',
+        'GoToSetup' => 'Go to setup',
+        'GoogleAPIeasyGuideForBeginner' => 'Google API Setup Easy Guide',
+        'title' => '<h2>Website Analytic Report by Google</h2>',
+        'warning' => "<p>If you want to edit website or update website's marketing. <u>Please login at https://rvwizard.com on desktop.</u></p>
                      <p class='text-eng'>If you want to edit website or update website's marketing. <u>Please login at https://rvwizard.com on desktop.</u></p>",
-            'ExampleReport' => 'Example Report',
-            'GoogleAPISetup' => [
-                    'CreateGoogleAuthorisation' => 'Create Google Authorisation',
-                    'GoogleAPISetupEasyGuide' => 'Google API Setup Easy Guide',
-            ],
+        'ExampleReport' => 'Example Report',
+        'GoogleAPISetup' => [
+            'CreateGoogleAuthorisation' => 'Create Google Authorisation',
+            'GoogleAPISetupEasyGuide' => 'Google API Setup Easy Guide',
+        ],
     ],
 
     'Mktsetting' => [
-               'googleapi' => '<p>Please fill Client ID and Client Secret to connect with google report and show in this page.</p>',
-               'googleClientIDError' => 'Please fill Client ID',
-               'googleClientSecretError' => 'Please fill Client Secret',
+        'googleapi' => '<p>Please fill Client ID and Client Secret to connect with google report and show in this page.</p>',
+        'googleClientIDError' => 'Please fill Client ID',
+        'googleClientSecretError' => 'Please fill Client Secret',
     ],
     'Google' => [
         'GoogleTracking' => 'Please insert Google Tracking ID to connect with Google Analytics report of your website. If you have Google Analytics setup for your website already, you can insert Tracking ID immediately.',
@@ -75,7 +75,6 @@ return [
         'google-analytic' => 'Google Analytic ',
         'tracking-id' => 'Tracking ID for',
         'google-search-console' => 'Google Search Console',
-        'verify' => 'Verify'
+        'verify' => 'Verify',
     ],
-    
 ];

@@ -1,7 +1,7 @@
 @extends('rvsitebuilder/marketing::admin.layouts.app')
 
 @push('package-scripts')
-<script>
+<script nonce="{{ csrf_token() }}">
     routeMktIndex = '{!! route("admin.marketing.mkt.index") !!}';
 </script>
 
@@ -27,7 +27,7 @@
 
 
 <!-- Load the library. -->
-<script>
+<script nonce="{{ csrf_token() }}">
 (function(w,d,s,g,js,fjs){
   g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
   js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
@@ -37,7 +37,7 @@
 </script>
 
 
-<script>
+<script nonce="{{ csrf_token() }}">
 gapi.analytics.ready(function() {
     // Authorize the user.
     // CLIENT_ID = 'xxxxxxxxxx';don't use this but use access_token that allow on the first one
@@ -55,14 +55,14 @@ gapi.analytics.ready(function() {
 <!--Create the containing elements. -->
 
  <div class="rv-useranalytic-content">
-	<div class="uk-grid">
-		<div class="rv-panel-box-width">
-		  @include('rvsitebuilder/marketing::admin.mkt.includes.acquire')
-		</div>
-		<div>
-		  @include('rvsitebuilder/marketing::admin.mkt.includes.performance')
-		</div>
-	</div>
+    <div class="uk-grid">
+        <div class="rv-panel-box-width">
+          @include('rvsitebuilder/marketing::admin.mkt.includes.acquire')
+        </div>
+        <div>
+          @include('rvsitebuilder/marketing::admin.mkt.includes.performance')
+        </div>
+    </div>
 </div>
 
 

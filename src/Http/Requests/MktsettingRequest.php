@@ -10,9 +10,9 @@ class MktsettingRequest extends FormRequest
     {
         //TODO Update validation rules
         return [
-                //TODO to pam can't use required in request because ajax use request onkeyup and save follwing send data , need not to have id and secret at the same time
-                //'GA_API_CLIENT_ID' => 'required',
-                //'GA_API_CLIENT_SECRET' => 'required',
+            //TODO to pam can't use required in request because ajax use request onkeyup and save follwing send data , need not to have id and secret at the same time
+            //'GA_API_CLIENT_ID' => 'required',
+            //'GA_API_CLIENT_SECRET' => 'required',
         ];
     }
 
@@ -29,8 +29,8 @@ class MktsettingRequest extends FormRequest
     {
         //TODO language system
         return [
-                //'GA_API_CLIENT_ID.required' => 'The "GA_API_CLIENT_ID" field is required.',
-                //'GA_API_CLIENT_SECRET.required' => 'The "GA_API_CLIENT_SECRET" field is required.',
+            //'GA_API_CLIENT_ID.required' => 'The "GA_API_CLIENT_ID" field is required.',
+            //'GA_API_CLIENT_SECRET.required' => 'The "GA_API_CLIENT_SECRET" field is required.',
         ];
     }
 }

@@ -173,7 +173,8 @@ class Authorisation extends Model
 
     public function getScopesAttribute()
     {
-        if ($array = json_decode($this->scope, true)) {
+        $array = json_decode($this->scope, true);
+        if ($array) {
             return $array;
         }
 

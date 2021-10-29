@@ -1,7 +1,7 @@
 @extends('rvsitebuilder/marketing::admin.layouts.app')
 
 @push('package-scripts')
-<script>
+<script nonce="{{ csrf_token() }}">
     routeMktIndex = '{!! route("admin.marketing.mkt.index") !!}';
 </script>
 

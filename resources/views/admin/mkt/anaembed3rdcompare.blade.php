@@ -1,4 +1,4 @@
-<script>
+<script nonce="{{ csrf_token() }}">
 (function(w,d,s,g,js,fjs){
   g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
   js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
@@ -26,10 +26,10 @@
 <!-- Include the CSS that styles the charts. -->
 <link rel="stylesheet" href="https://ga-dev-tools.appspot.com/public/css/chartjs-visualizations.css">
 
-<script>
+<script nonce="{{ csrf_token() }}">
 gapi.analytics.ready(function() {
 
-	gapi.analytics.auth.authorize({	
+    gapi.analytics.auth.authorize({
         'serverAuth': {
             'access_token': '{{ $google_access_token }}'
         }
@@ -37,10 +37,10 @@ gapi.analytics.ready(function() {
 
     renderWeekOverWeekChart('ga:{{ $google_ana_web_id }}');
         function renderWeekOverWeekChart(ids) {
-    
+
             // Adjust `now` to experiment with different days, for testing only...
             var now = moment(); // .subtract(3, 'day');
-    
+
             var thisWeek = query({
               'ids': ids,
               'dimensions': 'ga:date,ga:nthDay',
@@ -57,17 +57,17 @@ gapi.analytics.ready(function() {
               'end-date': moment(now).subtract(1, 'day').day(6).subtract(1, 'week')
                   .format('YYYY-MM-DD')
             });
-    
+
             Promise.all([thisWeek, lastWeek]).then(function(results) {
-    
+
               var data1 = results[0].rows.map(function(row) { return +row[2]; });
               var data2 = results[1].rows.map(function(row) { return +row[2]; });
               var labels = results[1].rows.map(function(row) { return +row[0]; });
-    
+
               labels = labels.map(function(label) {
                 return moment(label, 'YYYYMMDD').format('ddd');
               });
-    
+
               var data = {
                 labels : labels,
                 datasets : [
@@ -89,7 +89,7 @@ gapi.analytics.ready(function() {
                   }
                 ]
               };
-    
+
               new Chart(makeCanvas('chart-1-container')).Line(data);
               generateLegend('legend-1-container', data.datasets);
             });
@@ -102,8 +102,8 @@ gapi.analytics.ready(function() {
                   .execute();
             });
           }
-    
-    
+
+
           /**
            * Create a new canvas inside the specified element. Set it to be the width
            * and height of its container.
@@ -114,16 +114,16 @@ gapi.analytics.ready(function() {
             var container = document.getElementById(id);
             var canvas = document.createElement('canvas');
             var ctx = canvas.getContext('2d');
-    
+
             container.innerHTML = '';
             canvas.width = container.offsetWidth;
             canvas.height = container.offsetHeight;
             container.appendChild(canvas);
-    
+
             return ctx;
           }
-    
-    
+
+
           /**
            * Create a visual legend inside the specified element based off of a
            * Chart.js dataset.
@@ -139,15 +139,15 @@ gapi.analytics.ready(function() {
                   escapeHtml(label) + '</li>';
             }).join('');
           }
-    
-    
+
+
           // Set some global Chart.js defaults.
           Chart.defaults.global.animationSteps = 60;
           Chart.defaults.global.animationEasing = 'easeInOutQuart';
           Chart.defaults.global.responsive = true;
           Chart.defaults.global.maintainAspectRatio = false;
-    
-    
+
+
           /**
            * Escapes a potentially unsafe HTML string.
            * @param {string} str An string that may contain HTML entities.
@@ -158,6 +158,6 @@ gapi.analytics.ready(function() {
             div.appendChild(document.createTextNode(str));
             return div.innerHTML;
           }
-});    
+});
 </script>
 

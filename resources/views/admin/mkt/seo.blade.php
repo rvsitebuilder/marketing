@@ -1,7 +1,7 @@
 @extends('rvsitebuilder/marketing::admin.layouts.app')
 
 @push('package-scripts')
-<script>
+<script nonce="{{ csrf_token() }}">
     routeMktIndex = '{!! route("admin.marketing.mkt.index") !!}';
 </script>
 
@@ -26,22 +26,22 @@
 
 @section('content')
 <div class="rv-useranalytic-content">
-	<div class="uk-grid">
-		<div class="uk-width-medium-1-2">
-			@include('rvsitebuilder/marketing::admin.mkt.includes.topkeyword')
-	    </div>
+    <div class="uk-grid">
+        <div class="uk-width-medium-1-2">
+            @include('rvsitebuilder/marketing::admin.mkt.includes.topkeyword')
+        </div>
 
 
-		<div class="uk-width-medium-1-2">
-			@include('rvsitebuilder/marketing::admin.mkt.includes.toplanding')
-	    </div>
+        <div class="uk-width-medium-1-2">
+            @include('rvsitebuilder/marketing::admin.mkt.includes.toplanding')
+        </div>
 
 
-		<div class="uk-width-medium-1-1">
-			@include('rvsitebuilder/marketing::admin.mkt.includes.toppageview')
-	    </div>
+        <div class="uk-width-medium-1-1">
+            @include('rvsitebuilder/marketing::admin.mkt.includes.toppageview')
+        </div>
 
-	</div>
+    </div>
 </div>
 
 <!-- end action -->

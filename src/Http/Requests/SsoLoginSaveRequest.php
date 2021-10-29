@@ -12,11 +12,11 @@ class SsoLoginSaveRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'loginType' => 'required',
-                'loginURL' => 'required',
-                'logoutURL' => 'required',
-                'ipLength' => 'required',
-                'secretKey' => 'required',
+            'loginType' => 'required',
+            'loginURL' => 'required',
+            'logoutURL' => 'required',
+            'ipLength' => 'required',
+            'secretKey' => 'required',
         ];
     }
 
@@ -32,11 +32,11 @@ class SsoLoginSaveRequest extends FormRequest
     {
         //TODO language system
         return [
-                'loginType.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.loginType'),
-                'loginURL.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.loginURL'),
-                'logoutURL.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.logoutURL'),
-                'ipLength.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.ipLength'),
-                'secretKey.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.secretKey'),
+            'loginType.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.loginType'),
+            'loginURL.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.loginURL'),
+            'logoutURL.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.logoutURL'),
+            'ipLength.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.ipLength'),
+            'secretKey.required' => __('rvsitebuilder/marketing::validation.SsoLoginSave.secretKey'),
         ];
     }
 }
